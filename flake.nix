@@ -13,7 +13,7 @@
     {
       devShells = forEachSupportedSystem ({ pkgs }: {
         default = pkgs.mkShell {
-          packages = with pkgs; [ python311 python311Packages.matplotlib ];
+          packages = with pkgs; [ python311 python311Packages.matplotlib python311Packages.pandas ];
         };
       });
     };
