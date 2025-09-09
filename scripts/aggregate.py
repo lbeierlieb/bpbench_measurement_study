@@ -42,6 +42,8 @@ for machine in sorted(os.listdir("results")):
     sysbench_score = find_sysbench_score(machine)
     if sysbench_score != None:
         rows.append([machine, "-", "sysbench", sysbench_score, sysbench_score])
+    else:
+        print("no sysbench score found")
 
     data = [
         ("repair",   "timing_overhead"),
@@ -92,6 +94,7 @@ for machine in sorted(os.listdir("results")):
     # filter out the machines that do not have a sysbench score
     sysbench_score = find_sysbench_score(machine)
     if sysbench_score == None:
+        print("no sysbench score found, skipping this machine")
         continue
 
     rows.append([machine, "sysbench", sysbench_score, sysbench_score])
