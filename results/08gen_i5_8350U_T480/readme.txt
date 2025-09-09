@@ -6,3 +6,4 @@ Bios configuration:
     - Intel SpeedStep technology disabled
     - CPU Power Management disabled
 P-State: N/A
+events per second: 1231.27

@@ -11,6 +11,10 @@ machine,metric,median,min
 07gen_i5_7300U_NUC,exec_bp_altp2m,204.8,189.1
 07gen_i5_7300U_NUC,exec_bp_altp2m_fss,114.6,107.9
 07gen_i5_7300U_NUC,read_bp_altp2m,205.7,189.6
+08gen_i5_8350U_T480,sysbench,1231.27,1231.27
+08gen_i5_8350U_T480,exec_bp_altp2m,153.0,142.8
+08gen_i5_8350U_T480,exec_bp_altp2m_fss,89.2,83.6
+08gen_i5_8350U_T480,read_bp_altp2m,154.2,143.9
 08gen_i7_8565U_yoga,sysbench,1554.17,1554.17
 08gen_i7_8565U_yoga,timing_overhead,0.9,0.8
 08gen_i7_8565U_yoga,exec_bp_rep,103.4,93.1
