@@ -44,26 +44,26 @@ for machine in sorted(os.listdir("results")):
         rows.append([machine, "-", "sysbench", sysbench_score, sysbench_score])
 
     data = [
-        ("ept", "timing_overhead"),
-        ("ept", "exec_bp_only"),
-        ("ept", "exec_page"),
-        ("ept", "read_byte"),
-        ("ept", "read_page"),
+        ("repair",   "timing_overhead"),
+        ("repair",   "exec_bp"),
+        ("repair",   "exec_page"),
+        ("repair",   "read_bp"),
+        ("repair",   "read_page"),
+        ("emul",     "timing_overhead"),
+        ("emul",     "exec_bp"),
+        ("emul",     "exec_page"),
+        ("emul",     "read_bp"),
+        ("emul",     "read_page"),
+        ("ept",      "timing_overhead"),
+        ("ept",      "exec_bp"),
+        ("ept",      "exec_page"),
+        ("ept",      "read_bp"),
+        ("ept",      "read_page"),
         ("ept-fast", "timing_overhead"),
-        ("ept-fast", "exec_bp_only"),
+        ("ept-fast", "exec_bp"),
         ("ept-fast", "exec_page"),
-        ("ept-fast", "read_byte"),
+        ("ept-fast", "read_bp"),
         ("ept-fast", "read_page"),
-        ("repair", "timing_overhead"),
-        ("repair", "exec_bp_only"),
-        ("repair", "exec_page"),
-        ("repair", "read_byte"),
-        ("repair", "read_page"),
-        ("emul", "timing_overhead"),
-        ("emul", "exec_bp_only"),
-        ("emul", "exec_page"),
-        ("emul", "read_byte"),
-        ("emul", "read_page"),
     ]
     for (variant, measurement) in data:
         f = find_file(machine, variant, measurement)
@@ -81,13 +81,13 @@ for machine in sorted(os.listdir("results")):
     print(machine)
 
     data = [
-        ("emul", "timing_overhead", "timing-overhead"),
-        ("ept", "exec_bp_only", "ept_exec"),
-        ("ept-fast", "exec_bp_only", "ept-fast_exec"),
-        ("ept", "read_byte", "ept_read"),
-        ("repair", "exec_bp_only", "repair_exec"),
-        ("emul", "exec_bp_only", "emul_exec"),
-        ("emul", "read_byte", "emul_read"),
+        (0, "emul",     "timing_overhead", "timing_overhead"),
+        (1, "repair",   "exec_bp",         "exec_bp_rep"),
+        (2, "emul",     "exec_bp",         "exec_bp_emul"),
+        (3, "ept",      "exec_bp",         "exec_bp_altp2m"),
+        (4, "ept-fast", "exec_bp",         "exec_bp_altp2m_fss"),
+        (5, "emul",     "read_bp",         "read_bp_emul"),
+        (6, "ept",      "read_bp",         "read_bp_altp2m"),
     ]
     # filter out the machines that do not have a sysbench score
     sysbench_score = find_sysbench_score(machine)
@@ -104,7 +104,7 @@ for machine in sorted(os.listdir("results")):
     else:
         no_smartvmi = False
 
-    for (variant, measurement, label) in data:
+    for (num, variant, measurement, label) in data:
         if no_smartvmi and (variant == "repair" or variant == "emul"):
             continue
         f = find_file(machine, variant, measurement)

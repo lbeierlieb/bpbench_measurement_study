@@ -8,12 +8,12 @@ df = pd.read_csv("plots/summary_selected.csv")
 df["machine"] = df["machine"].apply(lambda s: "_".join(s.split("_")[1:3]))
 
 # Keep only machines that have emul_exec
-valid_machines = df[df["metric"] == "emul_exec"]["machine"].unique()
+valid_machines = df[df["metric"] == "exec_bp_emul"]["machine"].unique()
 df = df[df["machine"].isin(valid_machines)].copy()
 
 # Normalize each machine by its emul_exec median
 for machine in valid_machines:
-    baseline = df.loc[(df["machine"] == machine) & (df["metric"] == "emul_exec"), "median"].values[0]
+    baseline = df.loc[(df["machine"] == machine) & (df["metric"] == "exec_bp_emul"), "median"].values[0]
     df.loc[df["machine"] == machine, "median"] /= baseline
     df.loc[df["machine"] == machine, "min"]    /= baseline
 
@@ -23,6 +23,7 @@ metrics = list(metrics)
 # Exclude metrics you don’t want
 metrics.remove("sysbench") if "sysbench" in metrics else None
 metrics.remove("timing-overhead") if "timing-overhead" in metrics else None
+metrics = ['exec_bp_rep', 'exec_bp_emul', 'exec_bp_altp2m', 'exec_bp_altp2m_fss', 'read_bp_emul', 'read_bp_altp2m']
 
 barWidth = 0.15
 x = np.arange(len(machines))  # positions for CPUs
@@ -30,21 +31,21 @@ x = np.arange(len(machines))  # positions for CPUs
 fig, ax = plt.subplots(figsize=(14, 8))
 
 colors = {
-    "ept_exec": "green",
-    "ept-fast_exec": "blue",
-    "ept_read": "orange",
-    "repair_exec": "purple",
-    "emul_exec": "cyan",
-    "emul_read": "red",
+    "exec_bp_rep":        "red",
+    "exec_bp_emul":       "lime",
+    "exec_bp_altp2m":     "cornflowerblue",
+    "exec_bp_altp2m_fss": "deepskyblue",
+    "read_bp_emul":       "greenyellow",
+    "read_bp_altp2m":     "lightskyblue",
 }
 
 labels = {
-    "ept_exec": "DRAKVUF EPT exec",
-    "ept-fast_exec": "DRAKVUF EPT FSS exec",
-    "ept_read": "DRAKVUF read",
-    "repair_exec": "SmartVMI repair exec",
-    "emul_exec": "SmartVMI emul exec",
-    "emul_read": "SmartVMI read",
+    "exec_bp_rep":        "WL1 exec_bp_rep             (SmartVMI)",
+    "exec_bp_emul":       "WL1 exec_bp_emul          (SmartVMI)",
+    "exec_bp_altp2m":     "WL1 exec_bp_altp2m       (DRAKVUF)",
+    "exec_bp_altp2m_fss": "WL1 exec_bp_altp2m_fss (DRAKVUF)",
+    "read_bp_emul":       "WL3 read_bp_emul          (SmartVMI)",
+    "read_bp_altp2m":     "WL3 read_bp_altp2m       (DRAKVUF)",
 }
 
 # plot each metric as a bar group
