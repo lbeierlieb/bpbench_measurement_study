@@ -52,6 +52,7 @@ machine,variant,measurement,median,min
 07gen_i5_7300U_NUC,ept-fast,exec_page,114.9,108.6
 07gen_i5_7300U_NUC,ept-fast,read_bp,204.4,190.9
 07gen_i5_7300U_NUC,ept-fast,read_page,232239.75,227966.1
+08gen_i5_8350U_T480,-,sysbench,1231.27,1231.27
 08gen_i5_8350U_T480,repair,timing_overhead,187.4,184.5
 08gen_i5_8350U_T480,repair,exec_bp,187.6,184.7
 08gen_i5_8350U_T480,repair,exec_page,187.8,185.1
