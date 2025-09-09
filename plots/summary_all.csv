@@ -346,6 +346,7 @@ machine,variant,measurement,median,min
 13gen_i7_13620H_infinity,ept-fast,exec_page,32.5,26.1
 13gen_i7_13620H_infinity,ept-fast,read_bp,55.8,46.8
 13gen_i7_13620H_infinity,ept-fast,read_page,56927.3,55311.9
+13gen_i7_13700H_infinity,-,sysbench,3453.76,3453.76
 13gen_i7_13700H_infinity,repair,timing_overhead,0.8,0.6
 13gen_i7_13700H_infinity,repair,exec_bp,98.5,83.2
 13gen_i7_13700H_infinity,repair,exec_page,100.0,81.0

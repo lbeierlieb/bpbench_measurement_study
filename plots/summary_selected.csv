@@ -111,6 +111,14 @@ machine,metric,median,min
 13gen_i7_13620H_infinity,exec_bp_altp2m_fss,33.0,29.4
 13gen_i7_13620H_infinity,read_bp_emul,24.5,20.2
 13gen_i7_13620H_infinity,read_bp_altp2m,55.8,46.7
+13gen_i7_13700H_infinity,sysbench,3453.76,3453.76
+13gen_i7_13700H_infinity,timing_overhead,0.8,0.6
+13gen_i7_13700H_infinity,exec_bp_rep,98.5,83.2
+13gen_i7_13700H_infinity,exec_bp_emul,26.5,15.1
+13gen_i7_13700H_infinity,exec_bp_altp2m,75.3,44.5
+13gen_i7_13700H_infinity,exec_bp_altp2m_fss,46.3,14.5
+13gen_i7_13700H_infinity,read_bp_emul,27.1,19.0
+13gen_i7_13700H_infinity,read_bp_altp2m,75.2,42.9
 13gen_i7_13700K_pc,sysbench,2921.45,2921.45
 13gen_i7_13700K_pc,timing_overhead,1.0,0.9
 13gen_i7_13700K_pc,exec_bp_rep,85.0,77.2
